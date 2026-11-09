@@ -1,0 +1,166 @@
+﻿@import "tailwindcss";
+
+@theme {
+  /* Reference typography: Inter everywhere, no display font, mono for labels */
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  /* Live-reference design system (portfolio.akshitrajput.tech):
+     bg #0a0a0a, glass surfaces #171717, accent #3b82f6, functional green #4ade80 */
+  --color-page: #0a0a0a; /* --color-background on the reference */
+  --color-surface: #171717; /* glass card base (rgba 23,23,23,.6 + blur) */
+  --color-surface-2: #1c1c1c; /* card hover (reference glass hover #171717e6) */
+  --color-accent: #3b82f6; /* --color-accent on the reference */
+  --color-accent-green: #4ade80; /* reserved: status dot + checkmarks */
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-caret: caret 1.15s steps(1) infinite;
+
+  /* Project-preview ambient motion (pass 9). Every use is prefixed
+     motion-safe: so reduced-motion renders the same scene fully static. */
+  --animate-pulse-soft: pulse-soft 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-blink-dot: blink-dot 1.3s ease-in-out infinite;
+  --animate-scan: scan 4.2s ease-in-out infinite;
+  --animate-ecg: ecg 3.2s linear infinite;
+  --animate-line: line-march 7s linear infinite;
+  --animate-drift: drift 5s ease-in-out infinite alternate;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes caret {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(0.75);
+    }
+  }
+
+  @keyframes blink-dot {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* Inspection sweep for the detector preview (absolute element in its stage) */
+  @keyframes scan {
+    0%,
+    100% {
+      top: 6%;
+    }
+    50% {
+      top: 76%;
+    }
+  }
+
+  /* Bright pulse segment sweeping along the ECG trace */
+  @keyframes ecg {
+    to {
+      stroke-dashoffset: -100;
+    }
+  }
+
+  /* Slow self-drawing data curve in the weather preview */
+  @keyframes line-march {
+    to {
+      stroke-dashoffset: -200;
+    }
+  }
+
+  /* Gentle float for the weather glyph */
+  @keyframes drift {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Decorative layers intentionally bleed past the viewport â€” clip instead of scrollbars */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    /* Base page color â€” the central masked grid lives in <Background/> */
+    @apply font-sans text-neutral-300 antialiased;
+    background-color: var(--color-page);
+    letter-spacing: -0.01em;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-white/20 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-white/70;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .animate-marquee,
+    .animate-caret {
+      animation: none !important;
+    }
+  }
+}
+
+/* Reference ticker: the hovered skill lights up accent-blue WHILE the band
+   keeps moving (pass 9). Rule is intentionally UNLAYERED - layered rules
+   would lose to the zinc-* text utilities. Fine static pointers only; a touch
+   tap must never create a sticky :hover. Reduced-motion keeps the static band. */
+@media (hover: hover) and (pointer: fine) {
+  .ticker-item:hover {
+    color: var(--color-accent);
+  }
+  .ticker-item:hover .ticker-dot {
+    background-color: var(--color-accent);
+  }
+}
