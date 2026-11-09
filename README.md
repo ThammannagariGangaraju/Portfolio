@@ -1,61 +1,99 @@
-# Gangaraju Thammannagari — Portfolio
+# Gangaraju Thammannagari
 
-A personal portfolio for **Gangaraju Thammannagari**, Aspiring Software Engineer · B.Tech CSE @ Mohan Babu University, Tirupati.
+### Aspiring Software Developer | Personal Portfolio
 
-Built with **React + Vite + TypeScript + Tailwind CSS v4 + Framer Motion + Lucide React**, with buttery-smooth scrolling via **Lenis**.
+A modern, responsive personal portfolio built to showcase my technical skills, projects, academic background, certifications, and achievements.
 
-Design system (recreated from the live reference): background `#0a0a0a` with vertical grid lines, glass-course surfaces `#171717` + blur, Inter typography, blue accent `#3b82f6` for chips/eyebrows/accents, and a green `#4ade80` reserved for status indicators and checkmarks.
+**Live Portfolio:** [Visit Website](https://portfolio-gamma-opal-1ghhnjz92f.vercel.app/)
 
-## Run it locally
+---
+
+## Overview
+
+This portfolio represents my technical journey, development experience, and continuous learning. It features a clean dark-themed interface, responsive layouts, smooth scrolling, and interactive animations.
+
+## Technology Stack
+
+- **Frontend:** React 19, TypeScript
+- **Build Tool:** Vite 6
+- **Styling:** Tailwind CSS v4
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Scrolling:** Lenis
+
+## Key Features
+
+- Responsive and modern user interface
+- Interactive hero section and navigation
+- Projects and technical skills showcase
+- Education and academic achievements
+- Certifications and coding profiles
+- Resume viewing and download
+- Contact and social links
+- Smooth scrolling and motion effects
+
+## Project Structure
+
+```text
+Portfolio/
+├── public/              # Static assets and resume
+├── src/
+│   ├── components/      # Portfolio UI and sections
+│   ├── config/          # Centralized portfolio content
+│   ├── lib/             # Utility functions
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── index.html
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/ThammannagariGangaraju/Portfolio.git
+cd Portfolio
+```
+
+Install dependencies:
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
 ```
 
-Other scripts:
+Start the development server:
 
 ```bash
-npm run build    # type-check + production build to /dist
-npm run preview  # serve the production build
+npm run dev
 ```
 
-## Adding your photo
+## Production Build
 
-The hero has a dedicated photo placeholder. To use your real photo, simply drop
-your image at:
-
-```
-public/profile.jpg
+```bash
+npm run build
+npm run preview
 ```
 
-The site auto-detects the file — no code changes needed. (Any `jpg/png` name can
-be set in `src/config/portfolio.ts → profile.photo`.)
+The optimized production build is generated in the `dist/` directory.
 
-## Where the content lives
+## Deployment
 
-All resume content (projects, skills, certifications, achievements, links) is
-centrally managed in:
+The portfolio is deployed on **Vercel**.
 
-```
-src/config/portfolio.ts   ← edit this file to update any content
-```
+**Live URL:** https://portfolio-gamma-opal-1ghhnjz92f.vercel.app/
 
-Your resume PDF is served from `public/resume.pdf` (download button included on
-the hero + contact sections).
+## Contact
 
-## Structure
+- **GitHub:** [ThammannagariGangaraju](https://github.com/ThammannagariGangaraju)
+- **Portfolio:** [Personal Website](https://portfolio-gamma-opal-1ghhnjz92f.vercel.app/)
 
-```
-src/
-├── config/portfolio.ts       # All content & links (single source of truth)
-├── lib/smoothScroll.ts       # Lenis setup + smooth anchor scrolling
-├── components/
-│   ├── layout/Background.tsx # Grid, drifting gradient orbs, film grain
-│   ├── ui/                   # AnimatedText, Reveal, SectionShell, ActionLink, CountUp
-│   ├── Navbar.tsx            # Glass nav, scroll-spy, mobile overlay, progress bar
-│   ├── Hero.tsx              # Animated name, CTAs, stats, photo frame
-│   ├── Marquee.tsx           # Tech ticker
-│   ├── About / Skills / Projects / Education / Certifications / Achievements / Contact / Footer
-└── index.css                 # Tailwind theme, gradients, glass utilities
-```
+---
+
+<p align="center">
+  © 2026 Gangaraju Thammannagari. All rights reserved.
+</p>
